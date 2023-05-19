@@ -299,7 +299,7 @@ modifications()
 	print-actions
 	ask '>'
 	[ "$REPLY" = $'\n' ] && return
-	echo
+	
 	[ -z "$actk[$REPLY]" ] && return
 	test "$verbose" && echo "$actk[$REPLY]"
 	eval $actk[$REPLY]
@@ -490,7 +490,8 @@ else
 	done
 	ask 'Create empty? (y/n)'
 	echo
-	[[ $REPLY =~ ^[Yy]$ ]] && git init .
+	[[ $REPLY y =~ ^[Yy]$ ]] && git init .
 	test -d .git
 fi
 exit $?
+/48
