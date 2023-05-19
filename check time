@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/ingress-bandwidth: 1M
+    kubernetes.io/egress-bandwidth: 1M
+...
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: hello-world
+
+spec:
+
+  selector:
+
+    matchLabels:
+
+      run: load-balancer-example
+
+  replicas: 2
+
+  template:
+
+    metadata:
+
+      labels:
+
+        run: load-balancer-example
+
+    spec:
+
+      containers:
+
+        - name: hello-world
+
+          image: gcr.io/google-samples/node-hello:1.0
+
+          ports:
+
+            - containerPort: 8080
+
+              protocol: TCP
+              
