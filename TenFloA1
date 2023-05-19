@@ -1,0 +1,17 @@
+import tensorflow_data_validation as tfdv
+from tensorflow_data_validation.utils import slicing_util
+
+# Slice on country feature (i.e., every unique value of the feature).
+slice_fn1 = slicing_util.get_feature_value_slicer(features={'country': None})
+
+# Slice on the cross of country and state feature (i.e., every unique pair of
+# values of the cross).
+slice_fn2 = slicing_util.get_feature_value_slicer(
+    features={'country': None, 'state': None})
+
+# Slice on specific values of a feature.
+slice_fn3 = slicing_util.get_feature_value_slicer(
+    features={'age': [10, 50, 70]})
+
+stats_options = tfdv.StatsOptions(
+    slice_functions=[slice_fn1, slice_fn2, slice_fn3])
