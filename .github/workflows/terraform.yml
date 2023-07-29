@@ -47,8 +47,7 @@ name: 'Terraform'
 on:
   push:
     branches: [ "main" ]
-  pull_request:A1
-
+  pull_request:
 permissions:
   contents: none
      
